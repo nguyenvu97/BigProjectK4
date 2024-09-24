@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService service;
@@ -28,7 +28,7 @@ public class AuthenticationController {
     }
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request, HttpServletResponse response) {
-        return ResponseEntity.ok().body(service.Login(request, response));
+        return ResponseEntity.ok().body(service.login(request, response));
     }
     @PostMapping("/refresh-token")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -38,15 +38,6 @@ public class AuthenticationController {
     public void logoutUser(HttpServletRequest request, HttpServletResponse response, Authentication authentication){
         service.logout(request, response, authentication);
     }
-    @GetMapping
-    @PreAuthorize("hasRole('user')")
-    public String hello() {
-        return "Hello from Spring boot & Keycloak";
-    }
-    @GetMapping("admin")
-    @PreAuthorize("hasRole('admin')")
-    public String hello1() {
-        return "Hello from Spring boot & Keycloak";
-    }
+
 
 }

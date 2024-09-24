@@ -22,6 +22,10 @@ public class Airport {
     @Column(name = "code")
     private String code;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zone_id")
+    private Zone zone;
+
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "departurePort")

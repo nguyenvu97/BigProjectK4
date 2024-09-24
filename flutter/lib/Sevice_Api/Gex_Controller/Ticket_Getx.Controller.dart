@@ -18,8 +18,7 @@ class Ticket_Getx_Controller extends GetxController {
   var customer = 1.obs;
   var children = 0.obs;
   var isSelectFindBy = true.obs;
-  var start = "".obs;
-  var end = "".obs;
+
   Rx<DateTime?> timeGo = Rx<DateTime?>(null);
   Rx<DateTime?> timeCallBack = Rx<DateTime?>(null);
   var dateTime = DateTime.now().obs;
@@ -55,12 +54,6 @@ class Ticket_Getx_Controller extends GetxController {
       children--;
       return;
     }
-  }
-
-  void swapItems() {
-    String swap = start.value;
-    start = end;
-    end.value = swap;
   }
 
   bool? CheckAddress(String start, String end, BuildContext context) {

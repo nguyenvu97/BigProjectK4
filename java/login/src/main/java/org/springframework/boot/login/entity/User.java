@@ -27,6 +27,7 @@ public class User implements UserDetails {
     public String password;
     public String fullName;
     public String aliases;
+    public String country;
     public Role role;
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;

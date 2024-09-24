@@ -1,7 +1,0 @@
-org/springframework/boot/apiclient/ApiClientApplication.class
-org/springframework/boot/apiclient/exception/NotFound.class
-org/springframework/boot/apiclient/dto/MemberData$MemberDataBuilder.class
-org/springframework/boot/apiclient/dto/MemberData.class
-org/springframework/boot/apiclient/mapper/MapperConfig.class
-org/springframework/boot/apiclient/auth/Jwt.class
-org/springframework/boot/apiclient/mapper/MapperAll.class

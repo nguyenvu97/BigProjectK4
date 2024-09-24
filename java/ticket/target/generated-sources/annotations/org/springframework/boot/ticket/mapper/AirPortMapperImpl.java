@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.boot.ticket.dto.AirportDto;
+import org.springframework.boot.ticket.entity.Airport;
+import org.springframework.boot.ticket.entity.Zone;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-25T07:11:08+0700",
+    date = "2024-09-23T21:31:01+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 20.0.1 (Oracle Corporation)"
 )
 @Component
-public class AirPortMapperImpl implements AirPortMapper {
+public class AirportMapperImpl implements AirportMapper {
 
     @Override
     public Airport toDto(AirportDto airportDto) {
@@ -20,13 +22,13 @@ public class AirPortMapperImpl implements AirPortMapper {
             return null;
         }
 
-        Airport.AirportBuilder airport = Airport.builder();
+        Airport airport = new Airport();
 
-        airport.id( airportDto.getId() );
-        airport.airportName( airportDto.getAirportName() );
-        airport.location( airportDto.getLocation() );
+        airport.setId( (int) airportDto.getId() );
+        airport.setCode( airportDto.getCode() );
+        airport.setName( airportDto.getName() );
 
-        return airport.build();
+        return airport;
     }
 
     @Override
@@ -37,9 +39,10 @@ public class AirPortMapperImpl implements AirPortMapper {
 
         AirportDto airportDto = new AirportDto();
 
+        airportDto.setLocation( airportZoneName( airport ) );
         airportDto.setId( airport.getId() );
-        airportDto.setAirportName( airport.getAirportName() );
-        airportDto.setLocation( airport.getLocation() );
+        airportDto.setCode( airport.getCode() );
+        airportDto.setName( airport.getName() );
 
         return airportDto;
     }
@@ -70,5 +73,20 @@ public class AirPortMapperImpl implements AirPortMapper {
         }
 
         return list;
+    }
+
+    private String airportZoneName(Airport airport) {
+        if ( airport == null ) {
+            return null;
+        }
+        Zone zone = airport.getZone();
+        if ( zone == null ) {
+            return null;
+        }
+        String name = zone.getName();
+        if ( name == null ) {
+            return null;
+        }
+        return name;
     }
 }

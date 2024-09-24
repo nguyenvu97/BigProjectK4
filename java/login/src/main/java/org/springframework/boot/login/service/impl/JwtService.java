@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.login.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +62,11 @@ public class JwtService {
     }
 
 
-    private String buildToken(Map< String,Object> extracClaims, UserDetails userDetails , long expiration) {
+    private String buildToken(Map<String, Object> extracClaims, UserDetails userDetails, long expiration) {
+        extracClaims.put("id", ((User) userDetails).getId());
+        extracClaims.put("name", ((User) userDetails).getFullName());
+        extracClaims.put("role", ((User) userDetails).getRole().toString());
+
         return Jwts
                 .builder()
                 .setClaims(extracClaims)

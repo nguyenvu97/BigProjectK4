@@ -16,14 +16,14 @@ spring:
         format_sql: true
     show-sql: true
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8081/realms/projectK4
-        opaquetoken:
-          client-id: projectK4
-          client-secret: ba7t3nsIG8ZdghdvFyBT4aclkALQxa8i
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8081/realms/projectK4
+#        opaquetoken:
+#          client-id: projectK4
+#          client-secret: ba7t3nsIG8ZdghdvFyBT4aclkALQxa8i
 jwt:
   auth:
     converter:

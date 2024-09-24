@@ -7,6 +7,7 @@ import 'package:flutter_application_4/Hotel/Hotel_Details.dart';
 import 'package:flutter_application_4/Hotel/Hotel_HomePage.dart';
 import 'package:flutter_application_4/Hotel/Search_hotel.dart';
 import 'package:flutter_application_4/Login/new_login.dart';
+import 'package:flutter_application_4/Sevice_Api/Gex_Controller/Ariport_Getx_Controller.dart';
 import 'package:flutter_application_4/Sevice_Api/Gex_Controller/Login_Get_Controller.dart';
 import 'package:flutter_application_4/Ticket/FindbyTicket/Find_By_Ticket.dart';
 import 'package:flutter_application_4/home/Home_page.dart';
@@ -26,6 +27,7 @@ class _MainTabViewState extends State<MainTabView>
     with TickerProviderStateMixin {
   late TabController? controller;
 
+  Ariport_Controller ariport_controller = Get.put(Ariport_Controller());
   int selectMenu = 0;
   int _currentIndex = 0;
 
@@ -219,6 +221,7 @@ class _MainTabViewState extends State<MainTabView>
           CustomNavigationBarItem(
             icon: GestureDetector(
                 onTap: () {
+                  ariport_controller.getMenu();
                   LoadingUtils.show();
 
                   // Thực hiện điều hướng và ẩn overlay sau khi chuyển trang hoàn tất

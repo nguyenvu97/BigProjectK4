@@ -33,7 +33,7 @@ class Hotel_Controller extends GetxController {
   var startTime = Rx<DateTime?>(null);
   var endTime = Rx<DateTime?>(null);
 
-  ShowDialog showController = Get.put(ShowDialog());
+  Show_Dia_log showController = Get.put(Show_Dia_log());
 
   bool Check_Time(BuildContext context) {
     if (startTime.value == null && endTime.value == null) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ShowDialog extends GetxController {
+class Show_Dia_log extends GetxController {
   void showSuccessDialog(
     BuildContext context,
     String title,
@@ -26,8 +26,7 @@ class ShowDialog extends GetxController {
     );
   }
 
-  void confirm_Dialog(
-      BuildContext context, String content, Widget widget) {
+  void confirm_Dialog(BuildContext context, String content, Widget widget) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -46,7 +45,6 @@ class ShowDialog extends GetxController {
                 TextButton(
                   child: Text("Xác Nhận"),
                   onPressed: () {
-                    
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => widget));
                   },

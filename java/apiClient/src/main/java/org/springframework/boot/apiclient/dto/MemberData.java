@@ -12,13 +12,14 @@ import org.springframework.scheduling.annotation.Async;
 @NoArgsConstructor
 public class MemberData {
     private long id;
-    private String sub;
+    private String name;
     private long iat;
     private long exp;
+    private String sub;
     private String role;
-    private String aliases;
-    private String fullName;
-    private String address;
-    private String phone;
+//    private String aliases;
+//    private String fullName;
+//    private String address;
+//    private String phone;
 
 }

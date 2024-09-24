@@ -25,14 +25,14 @@ public class Route {
     @Column(name = "note")
     private String note;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "de_a_id", insertable = false, updatable = false)
     private Airport departurePort;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ar_a_id", insertable = false, updatable = false)
     private Airport arrivalPort;
 
     @OneToMany(mappedBy = "route")
-    private Collection<FlightSegment> flightSegments = new ArrayList<>();
+    private Collection<Flight> flightSegments = new ArrayList<>();
 }

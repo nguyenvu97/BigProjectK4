@@ -26,9 +26,9 @@ public class Aircraft {
 
     @Column(length = 250,name = "code")
     private String code;
-    @Column(name = "totalSeats")
-    private Integer totalSeats;
-    @Column(name = "economySeats")
+    @Column(name = "total_seats") // sua lai // todo
+    private int totalSeats;
+    @Column(name = "economy_seats") // sua lai // todo
     private int economySeats;
     @Column(name = "businessseats")
     private int businessSeats;
@@ -37,13 +37,10 @@ public class Aircraft {
     @Column(name = "status")
     private int status;
 
-
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "airline_id", insertable = false, updatable = false)
-
     private Airline airline;
 
     @OneToMany(mappedBy = "aircraft")
-    private Collection<FlightSegment> flightSegments = new ArrayList<>();
+    private Collection<Flight> flightSegments = new ArrayList<>();
 }

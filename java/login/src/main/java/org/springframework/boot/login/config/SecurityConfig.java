@@ -1,7 +1,7 @@
 package org.springframework.boot.login.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.login.keycloak.JwtAuthConverter;
+//import org.springframework.boot.login.keycloak.JwtAuthConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,12 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
-
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-
 
 @Configuration
 @EnableWebSecurity
@@ -32,19 +26,17 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwt;
     public final AuthenticationProvider authenticationProvider;
 
-
     @Bean
     public SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
         http.authenticationProvider(authenticationProvider);
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.authorizeHttpRequests(auth -> {
-                    auth.anyRequest().permitAll();
-                }
+        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll()
         );
         http.addFilterBefore(jwt, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+}
 
 //    private final JwtAuthConverter jwtAuthConverter;
 //
@@ -68,5 +60,3 @@ public class SecurityConfig {
 //    }
 
 
-
-}

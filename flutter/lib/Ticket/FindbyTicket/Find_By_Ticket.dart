@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_4/Common/Box_Container/New_Box.dart';
 import 'package:flutter_application_4/Common/Text_Data.dart';
+import 'package:flutter_application_4/Sevice_Api/Gex_Controller/Ariport_Getx_Controller.dart';
 import 'package:flutter_application_4/Sevice_Api/Gex_Controller/Ticket_Getx.Controller.dart';
 import 'package:flutter_application_4/Ticket/FindbyTicket/Adress_Time.dart';
 import 'package:flutter_application_4/Ticket/FindbyTicket/Choose_Customer_Child.dart';
+import 'package:flutter_application_4/Ticket/FindbyTicket/Show_Menu.dart';
 import 'package:flutter_application_4/Ticket/FindbyTicket/TimeGo_CallBack.dart';
 import 'package:flutter_application_4/home/Home_page.dart';
 import 'package:get/get.dart';
@@ -165,7 +167,7 @@ class _FindByTicketState extends State<FindByTicket>
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          ticket_controller.swapItems();
+                                          ariport_controller.swapItems();
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(8),
@@ -267,7 +269,7 @@ class _FindByTicketState extends State<FindByTicket>
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          ticket_controller.swapItems();
+                                          ariport_controller.swapItems();
                                         },
                                         child: Container(
                                           padding: EdgeInsets.all(8),
@@ -386,10 +388,11 @@ class _FindByTicketState extends State<FindByTicket>
                           .toString();
                       //! ?? round_trip
                       if (ticket_controller.isSelectFindBy.value ?? true) {
-                        if (ticket_controller.start.isNotEmpty &&
-                            ticket_controller.end.isNotEmpty &&
+                        if (
+                            // ticket_controller.start.isNotEmpty &&
+                            //   ticket_controller.end.isNotEmpty &&
                             ticket_controller.timeGo != null &&
-                            ticket_controller.timeCallBack != null) {
+                                ticket_controller.timeCallBack != null) {
                           setState(() {
                             // final storage = FlutterSecureStorage();
                             // storage.write(key: "_isSelectTiket", value: "economy");
@@ -422,8 +425,9 @@ class _FindByTicketState extends State<FindByTicket>
                         }
                         //! ?? One Way
                       } else {
-                        if (ticket_controller.start.isNotEmpty &&
-                            ticket_controller.end.isNotEmpty &&
+                        if (
+                            // ticket_controller.start.isNotEmpty &&
+                            //   ticket_controller.end.isNotEmpty &&
                             ticket_controller.timeGo != null) {
                           setState(() {
                             // final storage = FlutterSecureStorage();

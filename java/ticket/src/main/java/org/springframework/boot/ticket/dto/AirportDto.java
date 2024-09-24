@@ -1,10 +1,17 @@
 package org.springframework.boot.ticket.dto;
 
-import lombok.Data;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class AirportDto {
     private long id;
-    private String airportName;
     private String location;
+    private String code;
+    private String name;
 }

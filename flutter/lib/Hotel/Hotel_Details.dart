@@ -32,7 +32,7 @@ class _Hotel_DetailsState extends State<Hotel_Details> {
     super.initState();
   }
 
-  ShowDialog showController = Get.put(ShowDialog());
+  Show_Dia_log showController = Get.put(Show_Dia_log());
 
   @override
   Widget build(BuildContext context) {

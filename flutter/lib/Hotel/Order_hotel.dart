@@ -24,7 +24,7 @@ Hotel_Controller hotel_controller = Get.put(Hotel_Controller());
 Login_Getx_Controller login_Controller = Get.put(Login_Getx_Controller());
 
 Booking_Getx_Controller booking_Controller = Get.put(Booking_Getx_Controller());
-ShowDialog showDialog = Get.put(ShowDialog());
+Show_Dia_log showDialog = Get.put(Show_Dia_log());
 
 class _Order_HotelState extends State<Order_Hotel> {
   @override

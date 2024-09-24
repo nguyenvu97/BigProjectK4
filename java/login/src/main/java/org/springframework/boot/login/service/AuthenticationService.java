@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public interface AuthenticationService {
      AuthenticationResponse register (RegisterRequest request);
-    AuthenticationResponse Login(AuthenticationRequest request, HttpServletResponse response);
+    AuthenticationResponse login(AuthenticationRequest request, HttpServletResponse response);
     void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication);
     void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

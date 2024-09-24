@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService,LogoutHa
                     .password(passwordEncoder.encode(request.getPassword()))
                     .fullName(request.getFullName())
                     .address(request.getAddress())
-//                    .country(request.getCountry())
+                    .country(request.getCountry())
                     .aliases(request.getAliases())
                     .build());
             var jwt = jwtService.generateToken(user);
@@ -73,18 +73,18 @@ public class AuthenticationServiceImpl implements AuthenticationService,LogoutHa
                     .password(passwordEncoder.encode(request.getPassword()))
                     .fullName(request.getFullName())
                     .address(request.getAddress())
-//                    .country(request.getCountry())
+                    .country(request.getCountry())
                     .aliases(request.getAliases())
                     .build());
 
             var jwt = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
-            String body = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "    <title>Đăng ký thành công </title>\n" + "    <style>\n" + "        body {\n" + "            font-family: Arial, sans-serif;\n" + "            text-align: center;\n" + "        }\n" + "        h1 {\n" + "            color: #008000;\n" + "        }\n" + "    </style>\n" + "</head>\n" + "<body>\n" + "    <h1>Đăng ký thành công</h1>\n" + "    <p>Cảm ơn bạn đã đăng ký thành công!</p>\n" + "    <p>Bạn có thể đăng nhập vào tài khoản của mình ngay bây giờ.</p>\n" + "</body>\n" + "</html>\n";
-            EmailDto emailDto = new EmailDto();
-            emailDto.setEmail(request.getEmail());
-            emailDto.setTo(request.getEmail());
-            emailDto.setBody(body);
-        emailClient.email(emailDto);
+//            String body = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "    <title>Đăng ký thành công </title>\n" + "    <style>\n" + "        body {\n" + "            font-family: Arial, sans-serif;\n" + "            text-align: center;\n" + "        }\n" + "        h1 {\n" + "            color: #008000;\n" + "        }\n" + "    </style>\n" + "</head>\n" + "<body>\n" + "    <h1>Đăng ký thành công</h1>\n" + "    <p>Cảm ơn bạn đã đăng ký thành công!</p>\n" + "    <p>Bạn có thể đăng nhập vào tài khoản của mình ngay bây giờ.</p>\n" + "</body>\n" + "</html>\n";
+//            EmailDto emailDto = new EmailDto();
+//            emailDto.setEmail(request.getEmail());
+//            emailDto.setTo(request.getEmail());
+//            emailDto.setBody(body);
+//        emailClient.email(emailDto);
         return AuthenticationResponse
                 .builder()
                 .accessToken(jwt)
@@ -94,7 +94,7 @@ public class AuthenticationServiceImpl implements AuthenticationService,LogoutHa
 
     @Override
     @Async
-    public AuthenticationResponse Login(AuthenticationRequest request, HttpServletResponse response) {
+    public AuthenticationResponse login(AuthenticationRequest request, HttpServletResponse response) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userDao.findByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
